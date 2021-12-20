@@ -9,16 +9,16 @@ import java.util.Objects;
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private int id;
     @Basic
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
     @Basic
-    @Column(name = "BIRTHDATE")
+    @Column(name = "BIRTHDATE", nullable = false)
     private Date birthdate;
     @Basic
-    @Column(name = "COUNTRY")
+    @Column(name = "COUNTRY", nullable = false)
     private String country;
     @Basic
     @Column(name = "PHONE_NUMBER")
