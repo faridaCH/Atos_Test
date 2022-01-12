@@ -25,12 +25,9 @@ import java.util.NoSuchElementException;
         // URL: http://localhost:8080/api/user
         // dispaly details of  all users
         @GetMapping(value = "", produces = "application/json")
-        public Iterable<UserEntity> getAll(HttpServletRequest request) {
-
-            return userService.findAll();
-
+        public ResponseEntity<Iterable<UserEntity>> getAll(){
+            return ResponseEntity.ok(userService.findAll());
         }
-
 
         // URL: http://localhost:8080/api/user/?search=jad
         // dispaly details of users by  name or country

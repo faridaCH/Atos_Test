@@ -21,7 +21,7 @@ public class loggingAspect {
 
 
     @Around("execution(* com.atos.atosproject.services.UserService.edit*(..))")
-    public Object callEditUser( ProceedingJoinPoint proceedingJoinPoint ) throws IOException {
+    public Object callEditUser( ProceedingJoinPoint proceedingJoinPoint ) throws Throwable {
 
        // logger.info("************* Beford  execution editUser    *************");
        System.out.println("************* Beford  execution editUser    *************");
@@ -33,7 +33,7 @@ public class loggingAspect {
 
             logger.info("*************  editUser  problem   *************");
             logger.info(e.getMessage());
-
+            throw e;
         }
         endTime = System.currentTimeMillis();
 
@@ -44,7 +44,7 @@ public class loggingAspect {
 
 
     @Around("execution(* com.atos.atosproject.services.UserService.add*(..))")
-    public Object callAddUser( ProceedingJoinPoint proceedingJoinPoint ) throws IOException {
+    public Object callAddUser( ProceedingJoinPoint proceedingJoinPoint ) throws Throwable {
 
         logger.info("************* Beford  execution addUser    *************");
 
@@ -56,6 +56,7 @@ public class loggingAspect {
 
             logger.info("*************  addUser  problem   *************");
             logger.info(e.getMessage());
+            throw e;
 
         }
         endTime = System.currentTimeMillis();

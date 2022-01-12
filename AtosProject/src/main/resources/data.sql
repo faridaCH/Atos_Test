@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS `user` (
                                       `phone_number` varchar(25)  DEFAULT NULL,
                                       `gender` enum('Man','Woman','Other')  DEFAULT NULL,
                                       `email` varchar(25)  NOT NULL,
-                                      `Password` varchar(25)  NOT NULL
+                                      `Password` varchar(130)  NOT NULL
 
 ) ;
 --
 -- Chargement des données de la table `user`
 --
 INSERT INTO `user` (`id`, `name`, `birthdate`, `country`, `phone_number`, `gender`, `email`, `Password`) VALUES
-                                                                                                             (1, 'Maria Dupont', '2000-12-12', 'France', '0987654321', 'Man', 'jean.paul@atos.fr', '1234'),
+                                                                                                             (1, 'Maria Dupont', '2000-12-12', 'France', '0987654321', 'Man', 'jean.paul@atos.fr', '$2y$10$3mZI6F36pMC77V/cpiEVX.WLUiFTWBFToGqoAqH770B9wCdoR0Fqi'),
                                                                                                              (3, 'carine Dupont', '2003-09-10', 'France', '0987654321', 'Woman', 'carine.dupont@atos.fr', '1234'),
                                                                                                             (4, 'jad Dupont', '2000-09-10', 'France', '0987654321', 'Man', 'jad.dupont@atos.fr', '1234'),
                                                                                                              (6, 'jean Paul', '2000-12-12', 'France', '0987654321', 'Man', 'jean.paul@atos.fr', '1234');

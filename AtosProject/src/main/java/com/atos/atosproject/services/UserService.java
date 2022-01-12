@@ -19,7 +19,7 @@ public class UserService {
         private UserRepository userRepository;
 
         Date  currentDate= Date.valueOf(LocalDate.now());
-        private Object AgeCalculator;
+
 
 
         // dispaly details of  all users
@@ -31,7 +31,7 @@ public class UserService {
         // dispaly details of users by  nom or country
         public Iterable<UserEntity> findAll( String search ) {
             if( search != null && search.length() > 0 ){
-                return userRepository.findByNameContainsOrCountryContains( search , search );
+                return userRepository.findByNameContainsOrEmailContains( search , search );
             }
             return userRepository.findAll();
         }
@@ -78,12 +78,12 @@ public class UserService {
             Matcher matcher = VALID_NAME.matcher(user.getName());
             // return matcher.find();
             if (!matcher.find() || user.getName().length()<2) {
-                throw new InvalidObjectException(" invalide Name");
+                throw new InvalidObjectException(" Invalid  Name");
             }
 
             // check country
             if (user.getCountry().length() < 3 ) {
-                throw new InvalidObjectException(" invalide Country");
+                throw new InvalidObjectException(" Invalid  Country");
             }else {
                 if (!(user.getCountry().toUpperCase().equals("FRANCE"))) {
                     throw new InvalidObjectException(" You aren't allowed to create an account ");
@@ -94,7 +94,7 @@ public class UserService {
             //check birthdate
 
             if (user.getBirthdate().after(currentDate)) {
-                throw new InvalidObjectException(" invalide Birthdate ");
+                throw new InvalidObjectException(" Invalid  Birthdate ");
             }else {
                 if (getAdultAge(user.getBirthdate()).after(currentDate)) {
                     throw new InvalidObjectException(" You aren't allowed to create an account ");
@@ -105,12 +105,12 @@ public class UserService {
 
 
             if (user.getEmail().length() <= 5 || !validateEmail(user.getEmail())) {
-                throw new InvalidObjectException("invalide Email");
+                throw new InvalidObjectException("Invalid Email");
             }
 
 
             if ( user.getPhoneNumber()!= null && validatePhoneNumber(user.getPhoneNumber())==false) {
-                throw new InvalidObjectException("invalide PhoneNumber");
+                throw new InvalidObjectException("Invalid  PhoneNumber");
             }
 
 

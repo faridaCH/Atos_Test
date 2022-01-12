@@ -1,11 +1,15 @@
 package com.atos.atosproject.entities;
 
+import lombok.Builder;
+
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "USER", schema = "PUBLIC", catalog = "ATOS_DB")
+
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -32,6 +36,30 @@ public class UserEntity {
     @Basic
     @Column(name = "PASSWORD")
     private String password;
+
+
+
+    public UserEntity(String name, Date birthdate, String country, String phoneNumber, Gender gender, String email, String password) {
+        this.name = name;
+        this.birthdate = birthdate;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.email = email;
+        this.password = password;
+    }
+
+
+
+
+
+    public UserEntity() {
+
+    }
+
+
+
+
 
     public int getId() {
         return id;
